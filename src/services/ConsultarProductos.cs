@@ -1,12 +1,10 @@
 
-
-
 class ConsultarProductos
 {
-    private readonly ListaProductos _Productos;
+    private readonly List<Productos> _Productos;
     private readonly ProductoPrinter _Mostrar;
 
-    public ConsultarProductos(ListaProductos p, ProductoPrinter m)
+    public ConsultarProductos(List<Productos> p, ProductoPrinter m)
     {
         _Productos = p;
         _Mostrar = m;
@@ -16,9 +14,9 @@ class ConsultarProductos
     // 1. Obtener todos los productos de la lista.
     public void Ejercicio1()
     {
-        var ListaProductosCompleta = (from p in _Productos.Lproductos
+        var ListaProductosCompleta = (from p in _Productos
                                       select p).ToList(); 
-
+                                      
         _Mostrar.MostrarProductos(ListaProductosCompleta);
     }
 
@@ -26,13 +24,13 @@ class ConsultarProductos
     // 2. Obtener los nombres de todos los productos.
     public void Ejercicio2()
     {
-        var ProductosPorNombre = (from p in _Productos.Lproductos
-                                  select p).ToList(); 
+        var ProductosPorNombre = from p in _Productos
+                                 select p.Nombre; 
 
         Console.WriteLine("Productos:");
-        foreach(Productos i in ProductosPorNombre)
+        foreach(string i in ProductosPorNombre)
         {
-            Console.WriteLine($"Nombre: {i.Nombre}");
+            Console.WriteLine($"Nombre: {i}");
         }
     }
 
@@ -40,7 +38,7 @@ class ConsultarProductos
     // 3. Obtener los productos cuyo precio sea mayor a 500.
     public void Ejercicio3()
     {
-        var ProductosPrecioMayor500 = (from p in _Productos.Lproductos
+        var ProductosPrecioMayor500 = (from p in _Productos
                                        where p.Precio > 500
                                        select p).ToList(); 
 
@@ -52,7 +50,7 @@ class ConsultarProductos
     public void Ejercicio4()
     {
         
-        var ProductosStockMenor10 = (from p in _Productos.Lproductos
+        var ProductosStockMenor10 = (from p in _Productos
                                      where p.Stock < 10
                                      select p).ToList(); 
 
@@ -63,7 +61,7 @@ class ConsultarProductos
     // 5. Obtener los productos de la categoría "Electrónica".
     public void Ejercicio5()
     {
-        var ProductosCategoriaElectronica = (from p in _Productos.Lproductos
+        var ProductosCategoriaElectronica = (from p in _Productos
                                              where p.Categoria == "Electrónica"
                                              select p).ToList(); 
 
@@ -74,7 +72,7 @@ class ConsultarProductos
     // 6. Obtener los productos cuyo nombre comience con la letra 'L'.
     public void Ejercicio6()
     {
-        var ProductosNombreIniciaL = (from p in _Productos.Lproductos
+        var ProductosNombreIniciaL = (from p in _Productos
                                       where p.Nombre.StartsWith("L")
                                       select p).ToList(); 
 
@@ -85,7 +83,7 @@ class ConsultarProductos
     // 7. Obtener los productos cuyo precio esté entre 100 y 500.
     public void Ejercicio7()
     {
-        var ProductosPrecioEntre100y500 = (from p in _Productos.Lproductos
+        var ProductosPrecioEntre100y500 = (from p in _Productos
                                            where p.Precio >= 100 && p.Precio <= 500
                                            select p).ToList(); 
 
@@ -96,7 +94,7 @@ class ConsultarProductos
     // 8. Obtener los productos ordenados por precio ascendente.
     public void Ejercicio8()
     {
-        var ListaProductosPorPrecioAscendente = (from p in _Productos.Lproductos
+        var ListaProductosPorPrecioAscendente = (from p in _Productos
                                                  orderby p.Precio ascending
                                                  select p).ToList(); 
 
@@ -106,7 +104,7 @@ class ConsultarProductos
     // 9. Obtener los productos ordenados por precio descendente.
     public void Ejercicio9()
     {
-        var ListaProductosPorPrecioDescendente = (from p in _Productos.Lproductos
+        var ListaProductosPorPrecioDescendente = (from p in _Productos
                                                   orderby p.Precio descending
                                                   select p).ToList(); 
 
@@ -116,7 +114,7 @@ class ConsultarProductos
     // 10. Obtener los productos ordenados por nombre en orden alfabético.
     public void Ejercicio10()
     {
-        var ProductosOrdenadosNombre = (from p in _Productos.Lproductos
+        var ProductosOrdenadosNombre = (from p in _Productos
                                        orderby p.Nombre
                                        select p).ToList(); 
 
@@ -127,7 +125,7 @@ class ConsultarProductos
     // 11. Obtener los productos ordenados por stock de mayor a menor.
     public void Ejercicio11()
     {
-        var ListaProductosPorStockDescendente = (from p in _Productos.Lproductos
+        var ListaProductosPorStockDescendente = (from p in _Productos
                                                  orderby p.Stock descending
                                                  select p).ToList(); 
 
@@ -138,7 +136,7 @@ class ConsultarProductos
     // 12. Obtener los primeros 5 productos más caros.
     public void Ejercicio12()
     {
-        var ListaProductosMasCaros = (from p in _Productos.Lproductos
+        var ListaProductosMasCaros = (from p in _Productos
                                       orderby p.Precio descending
                                       select p).Take(5).ToList(); 
 
@@ -149,7 +147,7 @@ class ConsultarProductos
     // 13. Obtener los 10 productos con menor stock.
     public void Ejercicio13()
     {
-        var ListaProductosMenorStock = (from p in _Productos.Lproductos
+        var ListaProductosMenorStock = (from p in _Productos
                                         orderby p.Stock ascending
                                         select p).Take(10).ToList(); 
 
@@ -160,7 +158,7 @@ class ConsultarProductos
     // 14. Obtener la cantidad total de productos en la lista.
     public void Ejercicio14()
     {
-        var CantidadTotalProductos = (from p in _Productos.Lproductos
+        var CantidadTotalProductos = (from p in _Productos
                                       select p).Count(); 
 
         Console.WriteLine($"Cantidad total de productos: {CantidadTotalProductos}\n");
@@ -170,7 +168,7 @@ class ConsultarProductos
     // 15. Obtener la suma de todos los precios de los productos.
     public void Ejercicio15()
     {
-        var SumaTotal_Precios = (from p in _Productos.Lproductos
+        var SumaTotal_Precios = (from p in _Productos
                                  select p.Precio).Sum(); 
 
         Console.WriteLine($"Sumatoria total de precios: {SumaTotal_Precios}\n");
@@ -180,7 +178,7 @@ class ConsultarProductos
     // 16. Obtener el precio promedio de los productos.
     public void Ejercicio16()
     {
-        var Promedio_Precios = (from p in _Productos.Lproductos
+        var Promedio_Precios = (from p in _Productos
                                 select p.Precio).Average(); 
 
         Console.WriteLine($"Promedio total de precios: {Promedio_Precios}\n");
@@ -190,7 +188,7 @@ class ConsultarProductos
     // 17. Obtener el producto más caro.
     public void Ejercicio17()
     {
-        var ProductoMasCaro = (from p in _Productos.Lproductos
+        var ProductoMasCaro = (from p in _Productos
                                orderby p.Precio descending
                                select p).Take(1).ToList(); 
 
@@ -201,7 +199,7 @@ class ConsultarProductos
     // 18. Obtener el producto más barato.
     public void Ejercicio18()
     {
-        var ProductoMasBarato = (from p in _Productos.Lproductos
+        var ProductoMasBarato = (from p in _Productos
                                  orderby p.Precio ascending
                                  select p).Take(1).ToList(); 
 
@@ -212,7 +210,7 @@ class ConsultarProductos
     // 19. Verificar si hay algún producto con precio mayor a 1000.
     public void Ejercicio19()
     {
-        bool todos = _Productos.Lproductos.Any(p => p.Precio > 1000);
+        bool todos = _Productos.Any(p => p.Precio > 1000);
 
         Console.WriteLine(todos ? "Hay productos con precio mayor a 1000." : "No hay productos con precio mayor a 1000.");
     }
@@ -221,7 +219,7 @@ class ConsultarProductos
     // 20. Verificar si todos los productos tienen stock mayor a 5.
     public void Ejercicio20()
     {
-        bool todos = _Productos.Lproductos.All(p => p.Stock > 5);
+        bool todos = _Productos.All(p => p.Stock > 5);
 
         Console.WriteLine(todos ? "Todos los productos tienen su stock por encima de 5." : "No todos los productos tienen su stocks por encima de 5.");
     }
@@ -230,7 +228,7 @@ class ConsultarProductos
     // 21. Contar cuántos productos hay en la categoría "Audio".
     public void Ejercicio21()
     {
-        var CantidadProductosAudio = (from p in _Productos.Lproductos
+        var CantidadProductosAudio = (from p in _Productos
                                       where p.Categoria == "Audio"
                                       select p).Count(); 
 
@@ -241,7 +239,7 @@ class ConsultarProductos
     // 22. Agrupar los productos por categoría.
     public void Ejercicio22()
     {
-        var ProductosPorCategoria =  from p in _Productos.Lproductos
+        var ProductosPorCategoria =  from p in _Productos
                                      group p by p.Categoria;                                   
                                 
         foreach(var grupos in ProductosPorCategoria)
@@ -265,7 +263,7 @@ class ConsultarProductos
     // 23. Obtener la categoría con más productos.
     public void Ejercicio23()
     {
-        var CategoriaConMasProductos =  (from p in _Productos.Lproductos
+        var CategoriaConMasProductos =  (from p in _Productos
                                          group p by p.Categoria into g
                                          orderby g.Count() descending
                                          select g).First();                                   
@@ -277,7 +275,7 @@ class ConsultarProductos
     // 24. Obtener el stock total de todos los productos.
     public void Ejercicio24()
     {
-        var TotalStockProductos = (from p in _Productos.Lproductos
+        var TotalStockProductos = (from p in _Productos
                                    select p.Stock).Sum(); 
 
         Console.WriteLine($"Total de stock de todos los productos: {TotalStockProductos}\n");
@@ -287,7 +285,7 @@ class ConsultarProductos
     // 25. Obtener el producto con el nombre más largo.
     public void Ejercicio25()
     {
-        var ProductoConNombreMasLargo = (from p in _Productos.Lproductos
+        var ProductoConNombreMasLargo = (from p in _Productos
                                          orderby p.Nombre.Length descending
                                          select p).Take(1).ToList(); 
 
@@ -298,7 +296,7 @@ class ConsultarProductos
     // 26. Obtener el producto con la descripción más corta.
     public void Ejercicio26()
     {
-        var ProductoConNombreMasCorto = (from p in _Productos.Lproductos
+        var ProductoConNombreMasCorto = (from p in _Productos
                                          orderby p.Descripcion.Length ascending
                                          select p).Take(1).ToList(); 
 
@@ -309,7 +307,7 @@ class ConsultarProductos
     // 27. Filtrar los productos cuya descripción contenga la palabra "pantalla".
     public void Ejercicio27()
     {
-        var ProductosDescripcionEspecifica = (from p in _Productos.Lproductos
+        var ProductosDescripcionEspecifica = (from p in _Productos
                                               where p.Descripcion.Contains("pantalla") || p.Descripcion.Contains("Pantalla")
                                               select p).ToList(); 
 
@@ -320,7 +318,7 @@ class ConsultarProductos
     // 28. Obtener el promedio de stock de los productos de la categoría "Almacenamiento".
     public void Ejercicio28()
     {
-        var PromedioStockAlmacenamiento = (from p in _Productos.Lproductos
+        var PromedioStockAlmacenamiento = (from p in _Productos
                                            where p.Categoria == "Almacenamiento"
                                            select p.Stock).Average(); 
 
@@ -331,7 +329,7 @@ class ConsultarProductos
     // 29. Obtener los productos creados en una fecha específica (20/12/2022).
     public void Ejercicio29()
     {
-        var ProductosFechaEspecifica = (from p in _Productos.Lproductos
+        var ProductosFechaEspecifica = (from p in _Productos
                                         where p.FechaCreacion == new DateTime(2022, 12, 20)
                                         select p).ToList(); 
 
@@ -342,7 +340,7 @@ class ConsultarProductos
     // 30. Obtener los productos cuya ID sea par.
     public void Ejercicio30()
     {
-        var ListaProductos_IdPar = (from p in _Productos.Lproductos
+        var ListaProductos_IdPar = (from p in _Productos
                                     where p.Id % 2 == 0
                                     select p).ToList(); 
 
@@ -353,7 +351,7 @@ class ConsultarProductos
     // 31. Obtener los productos cuya ID sea impar.
     public void Ejercicio31()
     {
-        var ListaProductos_IdImpar = (from p in _Productos.Lproductos
+        var ListaProductos_IdImpar = (from p in _Productos
                                       where p.Id % 2 == 1
                                       select p).ToList(); 
 
@@ -364,7 +362,7 @@ class ConsultarProductos
     // 32. Obtener los productos cuyo precio tenga un decimal mayor a .50.
     public void Ejercicio32()
     {
-        var productosConDecimalMayor50 = (from p in _Productos.Lproductos
+        var productosConDecimalMayor50 = (from p in _Productos
                                       where p.Precio % 1 > 0.50m
                                       select p).ToList(); 
 
@@ -375,7 +373,7 @@ class ConsultarProductos
     // 33. Obtener los productos cuyo nombre tenga más de 10 caracteres.
     public void Ejercicio33()
     {
-        var ProductosNombreMayorA10 = (from p in _Productos.Lproductos
+        var ProductosNombreMayorA10 = (from p in _Productos
                                        where p.Nombre.Length > 10
                                        select p).ToList(); 
 
@@ -386,7 +384,7 @@ class ConsultarProductos
     // 34. Obtener los productos cuyo stock sea un número primo.
     public void Ejercicio34()
     {
-        var ProductosConStockPrimo = (from p in _Productos.Lproductos
+        var ProductosConStockPrimo = (from p in _Productos
                                       where EsPrimo(p.Stock)
                                       select p).ToList();
         bool EsPrimo(int numero){
@@ -409,7 +407,7 @@ class ConsultarProductos
     // 35. Obtener los productos cuyo nombre contenga la palabra "Pro".
     public void Ejercicio35()
     {
-        var ProductosNombreContienePro = (from p in _Productos.Lproductos
+        var ProductosNombreContienePro = (from p in _Productos
                                          where p.Nombre.Contains("Pro") || p.Nombre.Contains("pro")
                                          select p).ToList(); 
 
@@ -420,7 +418,7 @@ class ConsultarProductos
     // 36. Obtener los productos cuyo stock sea un múltiplo de 5.
     public void Ejercicio36()
     {
-        var ProductosStockMultiplo5 = (from p in _Productos.Lproductos
+        var ProductosStockMultiplo5 = (from p in _Productos
                                        where p.Stock % 5 == 0
                                        select p).ToList(); 
 
@@ -431,8 +429,8 @@ class ConsultarProductos
     // 37. Obtener los productos que tengan una descripción con más de 20 caracteres.
     public void Ejercicio37()
     {
-        var ProductosDescripcionLarga = (from p in _Productos.Lproductos
-                                         where p.Descripcion.Length > 10
+        var ProductosDescripcionLarga = (from p in _Productos
+                                         where p.Descripcion.Length > 20
                                          select p).ToList(); 
 
         _Mostrar.MostrarProductos(ProductosDescripcionLarga);
@@ -442,7 +440,7 @@ class ConsultarProductos
     // 38. Obtener los productos cuyo precio sea un número redondo (sin decimales).
     public void Ejercicio38()
     {
-        var ProductosPrecioRedondo = (from p in _Productos.Lproductos
+        var ProductosPrecioRedondo = (from p in _Productos
                                       where p.Precio % 1 == 0
                                       select p).ToList(); 
 
@@ -450,10 +448,20 @@ class ConsultarProductos
     }
 
 
+    // 39. Obtener los productos que tengan exactamente dos palabras en su nombre.
+    public void Ejercicio39()
+    {
+        var ProductosConNombre2Palabras = (from p in _Productos
+                                           where p.Nombre.Split(' ').Length == 2
+                                           select p).ToList(); 
+
+        _Mostrar.MostrarProductos(ProductosConNombre2Palabras);
+    }
+
     // 40. Obtener la cantidad de productos que no pertenecen a la categoría "General".
     public void Ejercicio40()
     {
-        var CantidadProductosNoGeneral =  (from p in _Productos.Lproductos
+        var CantidadProductosNoGeneral =  (from p in _Productos
                                            where p.Categoria != "General"
                                            select p).Count();                                   
                                 

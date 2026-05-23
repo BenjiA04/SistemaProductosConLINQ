@@ -1,10 +1,4 @@
 
-
-class ListaProductos
-{
-    public required List<Productos> Lproductos {get; set;}
-}
-
 class Productos
 {
     // Para que el id se cree automaticamente

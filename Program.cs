@@ -3,16 +3,13 @@ class Program
 {
     static void Main()
     {
-        ListaProductos lista = new ListaProductos
-        {
-            Lproductos = new List<Productos>()
-        };
+        List<Productos> lista_Productos = new List<Productos>();
 
-        CreadorProductos crear = new CreadorProductos(lista);
-        ProductoPrinter mostrar = new ProductoPrinter();
-        ConsultarProductos consultas = new ConsultarProductos(lista, mostrar);
+        CreadorProductos creador = new(lista_Productos);
+        ProductoPrinter printer = new();
+        ConsultarProductos consultar = new(lista_Productos, printer);
 
-         crear.Crear();
-         consultas.Ejercicio1();
+         creador.Crear();
+         consultar.Ejercicio39();
     }
 }

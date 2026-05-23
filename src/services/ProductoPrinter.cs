@@ -1,5 +1,4 @@
 
-
 class ProductoPrinter
 {
     public void MostrarProductos(List<Productos> Lproductos)
